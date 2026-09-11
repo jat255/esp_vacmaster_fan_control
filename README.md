@@ -1,6 +1,6 @@
 # Vacmaster Fan RF Remote → ESPHome / Home Assistant
 
-Replaces the RF433.92MHz remote for a **Vacmaster Aero AM201R Air Mover** (remote
+Replaces the RF433.92MHz remote for a **[Vacmaster Aero AM201R Air Mover](https://us.cleva.com/products/vacmaster-aero-air-mover-fitness-fan-am201r)** (remote
 model RC49A) with an M5Stack AtomS3 Lite + RF433T transmitter Unit, controlled
 through ESPHome and exposed in Home Assistant.
 
