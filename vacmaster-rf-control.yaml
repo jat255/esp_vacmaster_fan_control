@@ -1,0 +1,72 @@
+esphome:
+  name: vacmaster-rf-control
+  friendly_name: Vacmaster Fan Control
+  compile_process_limit: 1
+  area: Front Room
+
+esp32:
+  board: esp32-s3-devkitc-1
+  variant: esp32s3
+  framework:
+    type: arduino
+
+# AtomS3 Lite uses native USB serial/JTAG
+logger:
+  hardware_uart: USB_SERIAL_JTAG
+
+ota:
+  platform: esphome
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+api:
+  encryption:
+    key: !secret vacmaster_rf_capture__encryption_key
+
+remote_transmitter:
+  pin: GPIO2
+  carrier_duty_percent: 100%
+  rmt_symbols: 192
+
+button:
+  - platform: template
+    name: "Fan Power"
+    on_press:
+      - remote_transmitter.transmit_rc_switch_raw:
+          code: '000000110100001100000001'   # 213761
+          protocol: 1
+          repeat:
+            times: 10
+            wait_time: 0us
+
+  - platform: template
+    name: "Fan Speed 1"
+    on_press:
+      - remote_transmitter.transmit_rc_switch_raw:
+          code: '000000110100001100001000'   # 213768 (low)
+          protocol: 1
+          repeat:
+            times: 10
+            wait_time: 0us
+
+  - platform: template
+    name: "Fan Speed 2"
+    on_press:
+      - remote_transmitter.transmit_rc_switch_raw:
+          code: '000000110100001100000100'   # 213764 (medium)
+          protocol: 1
+          repeat:
+            times: 10
+            wait_time: 0us
+
+  - platform: template
+    name: "Fan Speed 3"
+    on_press:
+      - remote_transmitter.transmit_rc_switch_raw:
+          code: '000000110100001100000010'   # 213762 (high)
+          protocol: 1
+          repeat:
+            times: 10
+            wait_time: 0us

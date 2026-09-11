@@ -1,0 +1,31 @@
+# Home Assistant Lovelace card for the Vacmaster fan remote.
+# Add via: Edit Dashboard -> Add Card -> Manual -> paste this -> Save.
+type: vertical-stack
+cards:
+  - type: markdown
+    content: "## 🌀 Front Room Fan"
+
+  - type: grid
+    columns: 2
+    square: false
+    cards:
+      - type: tile
+        entity: button.front_room_vacmaster_fan_control_fan_power
+        name: Power
+        icon: mdi:power
+        color: red
+
+      - type: tile
+        entity: button.front_room_vacmaster_fan_control_fan_speed_1
+        name: Low
+        icon: mdi:fan-speed-1
+
+      - type: tile
+        entity: button.front_room_vacmaster_fan_control_fan_speed_2
+        name: Medium
+        icon: mdi:fan-speed-2
+
+      - type: tile
+        entity: button.front_room_vacmaster_fan_control_fan_speed_3
+        name: High
+        icon: mdi:fan-speed-3
