@@ -7,6 +7,12 @@ through ESPHome and exposed in Home Assistant.
 See [`implementation_plan.md`](implementation_plan.md) for the full background,
 parts list, and original build plan this project followed.
 
+> **Disclaimer:** This project is an independent, unofficial DIY integration
+> and is not affiliated with, endorsed by, or sponsored by Vacmaster or its
+> parent company in any way. "Vacmaster" and related product names are
+> trademarks of their respective owners, used here only to identify the
+> hardware this project is compatible with.
+
 ## Hardware
 
 - M5Stack AtomS3 Lite (ESP32-S3)

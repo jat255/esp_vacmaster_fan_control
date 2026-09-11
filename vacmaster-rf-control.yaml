@@ -1,6 +1,9 @@
 esphome:
   name: vacmaster-rf-control
   friendly_name: Vacmaster Fan Control
+  # this can be changed, but the compilation ran out
+  # memory on my HA Yellow when using the default. Note,
+  # the first compilation took quite a while (~25 minutes)
   compile_process_limit: 1
   area: Front Room
 
@@ -26,7 +29,7 @@ api:
     key: !secret vacmaster_rf_capture__encryption_key
 
 remote_transmitter:
-  pin: GPIO2
+  pin: GPIO2   # this is the "OUT" pin on the RF433T
   carrier_duty_percent: 100%
   rmt_symbols: 192
 
@@ -37,6 +40,8 @@ button:
       - remote_transmitter.transmit_rc_switch_raw:
           code: '000000110100001100000001'   # 213761
           protocol: 1
+          # testing during development found that repeating was
+          # necessary or the fan would not respond
           repeat:
             times: 10
             wait_time: 0us
